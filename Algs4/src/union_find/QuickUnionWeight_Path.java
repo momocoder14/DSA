@@ -18,7 +18,7 @@ public class QuickUnionWeight_Path {
     // Find the root of x by following parent pointers until reaching the root
     private int root(int x) {
         while (x != id[x]) {  // Follow the path until x points to itself (root)
-            id[x] = id[id[x]];
+            id[x] = id[id[x]]; // path compression
             x = id[x];
         }
         return x;
