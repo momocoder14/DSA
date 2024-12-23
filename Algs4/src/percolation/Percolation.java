@@ -1,5 +1,3 @@
-package percolation;
-
 public class Percolation {
 
     private int[] parent; // Union-find structure for connected components
@@ -39,13 +37,13 @@ public class Percolation {
             openSitesCount++;  // Increment the count of open sites
 
             // Connect the site to its neighboring open sites
-            if (row > 0 && isOpen(row - 1, col)) {
+            if (isOpen(row - 1, col)) {
                 union(site, xyTo1D(row - 1, col));  // Connect to the site above
             }
             if (row < gridSize - 1 && isOpen(row + 1, col)) {
                 union(site, xyTo1D(row + 1, col));  // Connect to the site below
             }
-            if (col > 0 && isOpen(row, col - 1)) {
+            if (isOpen(row, col - 1)) {
                 union(site, xyTo1D(row, col - 1));  // Connect to the site on the left
             }
             if (col < gridSize - 1 && isOpen(row, col + 1)) {
@@ -116,23 +114,5 @@ public class Percolation {
         // Create a 5x5 percolation system
         Percolation percolation = new Percolation(5);
 
-        // Open some sites
-        percolation.open(0, 0);
-        percolation.open(1, 0);
-        percolation.open(2, 0);
-        percolation.open(3, 0);
-        percolation.open(4, 0);
-
-        // Check if the system percolates
-        System.out.println("Percolates: " + percolation.percolates());  // Should print true
-
-        // Check the number of open sites
-        System.out.println("Number of open sites: " + percolation.numberOfOpenSites());  // Should print 5
-
-        // Check if a specific site is full
-        System.out.println("Site (4, 0) is full: " + percolation.isFull(4, 0));  // Should print true
-
-        // Check if a specific site is open
-        System.out.println("Site (4, 1) is open: " + percolation.isOpen(4, 1));  // Should print false
     }
 }
